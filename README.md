@@ -32,7 +32,7 @@ library(foreach)
 library(parallel)
 library(doSNOW)
 
-cl <- makeCluster(parallel::detectCores())
+cl <- makeCluster(detectCores())
 registerDoSNOW(cl)
 
 n <- 100
@@ -48,7 +48,7 @@ log$remove()
 
 ### In the monitoring process
 
-Start another R process, preferable in the same root directory. Then use
+Start another R process, preferably in the same root directory. Then use
 `logvogel::status()` to track the status of the loop.
 
 Example:
