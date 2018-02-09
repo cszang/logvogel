@@ -36,6 +36,7 @@ Logfile <- R6::R6Class(
     remove = function() {
       self$active <- FALSE
       removed <- file.remove(self$path)
+      cat("Deleted logfile at", self$path, "\n")
       invisible(removed)
     },
     print = function(...) {
