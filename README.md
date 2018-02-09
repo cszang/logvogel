@@ -36,14 +36,14 @@ cl <- makeCluster(detectCores())
 registerDoSNOW(cl)
 
 n <- 100
-log <- logfile("test.log", n)
+loop_log <- logfile("loop_log", n)
 
 foreach(i = 1:n, .packages = c("logvogel")) %dopar% {
   Sys.sleep(rnorm(1, mean = 4))
-  log$update()
+  loop_log$update()
 }
 
-log$remove()
+loop_log$remove()
 ```
 
 ### In the monitoring process
@@ -54,7 +54,7 @@ Start another R process, preferably in the same root directory. Then use
 Example:
 
 ```r
-logvogel::status("test.log")
+logvogel::status("loop_log")
 ```
 
 ### Package name
