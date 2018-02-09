@@ -49,7 +49,7 @@ Logfile <- R6::R6Class(
   ))
 
 
-#' External progress bar for a logfile
+#' Logfile for external progress tracking
 #'
 #' This reference class keeps track of a logfile, which can be updated within a
 #' loop etc. and tracked from _outside_ (in an external process), using
