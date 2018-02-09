@@ -9,6 +9,7 @@
 #'
 #' @return nothing, invoked for side effects
 #' @importFrom dplyr progress_estimated
+#' @importFrom utils tail
 #' @export
 #'
 #' @examples

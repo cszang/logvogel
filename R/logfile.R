@@ -1,5 +1,6 @@
 #' @importFrom R6 R6Class
 #' @importFrom here here
+#' @importFrom utils tail
 Logfile <- R6::R6Class(
   "Logfile",
   public = list(
