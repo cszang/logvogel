@@ -1,6 +1,9 @@
 logvogel <img src="man/figures/logo.png" align="right" height="150"/>
 =====================================================================
 
+[![Travis-CI Build Status](https://travis-ci.org/cszang/logvogel.svg?branch=master)](https://travis-ci.org/cszang/logvogel)
+![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+
 ## Overview
 
 Tracking progress from parallel processes is hard, e.g. when running a

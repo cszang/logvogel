@@ -1,0 +1,22 @@
+# .travis.yml
+#
+# https://docs.travis-ci.com/user/languages/r/
+
+language: r
+sudo: false
+cache: packages
+warnings_are_errors: false
+
+r:
+- oldrel
+- release
+- devel
+
+r_packages:
+  - dplyr
+  - here
+  - R6
+  - covr
+
+after_success:
+- Rscript -e 'covr::codecov()'
