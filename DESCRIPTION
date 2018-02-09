@@ -6,6 +6,11 @@ Author: Christian Zang
 Maintainer: Christian Zang <christian.zang@wzw.tum.de>
 Description: Handle creation logfiles where normal progressbars are
     difficult or impossible (e.g., parallel foreach loops).
+Depends: R (>= 3.1.0)
+Imports:
+    dplyr,
+    R6,
+    here
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
