@@ -14,7 +14,7 @@ Logfile <- R6::R6Class(
       self$n <- n
       self$active <- TRUE
       self$create()
-      cat(path, "\n")
+      cat("Created new logfile for", self$n, "iterations at", path, "\n")
     },
     create = function() {
       cat(self$n, "\n", file = self$path)
