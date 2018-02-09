@@ -2,7 +2,7 @@
 % Please edit documentation in R/logfile.R
 \name{logfile}
 \alias{logfile}
-\title{External progress bar for a logfile}
+\title{Logfile for external progress tracking}
 \usage{
 logfile(path, n, here = TRUE)
 }

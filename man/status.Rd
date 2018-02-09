@@ -18,7 +18,7 @@ nothing, invoked for side effects
 }
 \description{
 Use this function in an external R process to track the status of a running
-loop from logfile.
+loop from a logfile created with `logfile()`.
 }
 \examples{
 \dontrun{
