@@ -1,7 +1,7 @@
 #' Show progress using a logfile
 #'
 #' Use this function in an external R process to track the status of a running
-#' loop from logfile.
+#' loop from a logfile created with `logfile()`.
 #'
 #' @param path path to the logfile
 #' @param here should base path of the logfile be located using `here::here()`
@@ -22,7 +22,7 @@ status <- function(path, here = TRUE, s = 0.1) {
   }
 
   if (!file.exists(path)) {
-    error("No logfile at specified path.")
+    stop("No logfile at specified path.")
   }
 
   get_tail <- function() {
