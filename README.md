@@ -57,6 +57,10 @@ Example:
 logvogel::status("test.log")
 ```
 
+### Package name
+
+The name `logvogel` is a German pun on the word "Lockvogel", which means "decoy".
+
 ### TODO
 
 - [ ] fix case when parallel jobs have very similar duration
