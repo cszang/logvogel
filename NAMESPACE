@@ -2,6 +2,7 @@
 
 export(logfile)
 export(status)
+import(seagull)
 importFrom(R6,R6Class)
 importFrom(dplyr,progress_estimated)
 importFrom(here,here)

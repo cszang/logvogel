@@ -1,10 +1,12 @@
 #' @importFrom R6 R6Class
 #' @importFrom here here
 #' @importFrom utils tail
+#' @import seagull
 Logfile <- R6::R6Class(
   "Logfile",
   public = list(
     path = NULL,
+    lock = NULL,
     n = NULL,
     active = NULL,
     initialize = function(path, n, here = TRUE) {
@@ -12,6 +14,7 @@ Logfile <- R6::R6Class(
         path <- file.path(here::here(), path)
       }
       self$path <- path
+      self$lock <- paste0(path, "lock")
       self$n <- n
       self$active <- TRUE
       self$create()
@@ -30,8 +33,10 @@ Logfile <- R6::R6Class(
       }
     },
     update = function() {
-      updated_iterator <- self$get_iterator() + 1
-      cat(updated_iterator, "\n", file = self$path, append = TRUE)
+      seagull::with_flock(self$lock, {
+        updated_iterator <- self$get_iterator() + 1
+        cat(updated_iterator, "\n", file = self$path, append = TRUE)
+      })
     },
     remove = function() {
       self$active <- FALSE
@@ -49,7 +54,6 @@ Logfile <- R6::R6Class(
       }
     }
   ))
-
 
 #' Logfile for external progress tracking
 #'

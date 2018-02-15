@@ -11,7 +11,9 @@ Tracking progress from parallel processes is hard, e.g. when running a
 solution](http://blog.revolutionanalytics.com/2015/02/monitoring-progress-of-a-foreach-parallel-job.html)
 is to print the status to an external logfile. This is the strategy of
 `logvogel`: it provides an easy way to monitor long-running loops from an
-external R process using logfiles.
+external R process using logfiles. Simultaneous write access to the logfile from
+parallel processes is prevented using the lock mechanism from
+[seagull](https://github.com/richfitz/seagull).
 
 ## Installation
 
@@ -63,7 +65,3 @@ logvogel::status("loop_log")
 ### Package name
 
 The name `logvogel` is a German pun on the word "Lockvogel", which means "decoy".
-
-### TODO
-
-- [ ] fix case when parallel jobs have very similar duration
