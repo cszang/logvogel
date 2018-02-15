@@ -62,6 +62,9 @@ Example:
 logvogel::status("loop_log")
 ```
 
+Alternatively, `autostatus()` finds all files with the extension `.log` in the
+project root and asks for which one the status should be tracked.
+
 ### Package name
 
 The name `logvogel` is a German pun on the word "Lockvogel", which means "decoy".
