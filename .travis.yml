@@ -18,5 +18,8 @@ r_packages:
   - R6
   - covr
 
+r_github_packages:
+  - richfitz/seagull
+
 after_success:
 - Rscript -e 'covr::codecov()'
