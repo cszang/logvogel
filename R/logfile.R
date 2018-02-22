@@ -41,8 +41,9 @@ Logfile <- R6::R6Class(
     remove = function() {
       self$active <- FALSE
       removed <- file.remove(self$path)
+      lock_removed <- file.remove(self$lock)
       cat("Deleted logfile at", self$path, "\n")
-      invisible(removed)
+      invisible(removed & lock_removed)
     },
     print = function(...) {
       if (self$active) {
