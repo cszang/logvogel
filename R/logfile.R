@@ -48,7 +48,7 @@ Logfile <- R6::R6Class(
         }
         cat("Deleted logfile at", self$path, "\n")
         self$active <- FALSE
-        invisible(removed & lock_removed)
+        return(invisible(removed & lock_removed))
       } else {
         cat("Logfile already deleted; nothing to do.\n")
       }
