@@ -66,6 +66,37 @@ logvogel::status("loop.log")
 Alternatively, `autostatus()` finds all files with the extension `.log` in the
 project root and asks for which one the status should be tracked.
 
-### Package name
+## Package name
 
 The name `logvogel` is a German pun on the word "Lockvogel", which means "decoy".
+
+## Using `logvogel` with `foreach` in a function
+
+Make sure to export the variable corresponding to your logfile-object:
+
+```r
+library(foreach)
+library(parallel)
+library(doSNOW)
+library(logvogel)
+
+cl <- makeCluster(detectCores())
+registerDoSNOW(cl)
+
+
+logfn <- function() {
+  
+  n <- 100
+  loop_log <- logfile("loop.log", n)
+
+  foreach(i = 1:n, .packages = c("logvogel"), .export = c("loop_log")) %dopar% {
+    Sys.sleep(rnorm(1, mean = 4))
+    loop_log$update()
+  }
+  
+  loop_log$remove()
+  
+}
+
+logfn()
+```
