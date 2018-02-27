@@ -33,6 +33,7 @@ logfile can be printed, updated with `.$update()`, and removed with
 Example:
 
 ```r
+library(logvogel)
 library(foreach)
 library(parallel)
 library(doSNOW)
@@ -41,7 +42,7 @@ cl <- makeCluster(detectCores())
 registerDoSNOW(cl)
 
 n <- 100
-loop_log <- logfile("loop_log", n)
+loop_log <- logfile("loop.log", n)
 
 foreach(i = 1:n, .packages = c("logvogel")) %dopar% {
   Sys.sleep(rnorm(1, mean = 4))
@@ -59,7 +60,7 @@ Start another R process, preferably in the same root directory. Then use
 Example:
 
 ```r
-logvogel::status("loop_log")
+logvogel::status("loop.log")
 ```
 
 Alternatively, `autostatus()` finds all files with the extension `.log` in the
