@@ -27,10 +27,18 @@ status <- function(path, here = TRUE, s = 0.1) {
   }
 
   get_tail <- function() {
-    as.numeric(tail(readLines(path), 1))
+    if (file.exists(path)) {
+      as.numeric(tail(readLines(path), 1))
+    } else {
+      NULL
+    }
   }
   get_head <- function() {
-    as.numeric(readLines(path)[1])
+    if (file.exists(path)) {
+      as.numeric(readLines(path)[1])
+    } else {
+      NULL
+    }
   }
 
   n <- get_head()
@@ -55,15 +63,23 @@ status <- function(path, here = TRUE, s = 0.1) {
   while (i <= n) {
     Sys.sleep(s)
     new_i <- get_tail()
-    if (new_i > i) {
-      i <- new_i
-      pb$tick()$print()
+    if (!is.null(new_i)) {
+      if (new_i > i) {
+        i <- new_i
+        pb$tick()$print()
+      }
+    } else {
+      pb$stop()
+      message("Logfile was removed.")
+      return(invisible(NULL))
     }
   }
 
   if (i == n) {
     pb$stop()
   }
+
+  return(invisible(NULL))
 }
 
 #' Auto-find logfiles and show progress
